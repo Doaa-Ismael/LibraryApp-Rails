@@ -1,0 +1,19 @@
+<% if @books.blank? %>
+  <p>There are not any books currently in the system.</p>
+
+<% else %>
+  <p>These are the current books in our system</p>
+
+  <ul id = "books", class="list-group">
+    <% @books.each do |c| %>
+      <li class="list-group-item">
+        <%= link_to c.title, {action: 'show', id: c.id} %>
+        <span class='float-right'>
+          <%= link_to 'edit', { action: 'edit', id: c.id}  %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+
+<% end %>
+<p><%= link_to "Add new Book", {:action => 'new' }%></p>
